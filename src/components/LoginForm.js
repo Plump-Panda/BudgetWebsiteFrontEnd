@@ -30,10 +30,16 @@ function LoginForm() {
 
     try{
       response = await axios.post("/api/login", {email: email.current.value});
-      if(bcrypt.compare(password.current.value, response.data.password)){
+      console.log(password.current.value, response.data.password);
+      if(await bcrypt.compare(password.current.value, response.data.password)){
         console.log("SUCCESS");
         window.localStorage.setItem('isLoggedIn', true);
-        navigate('/home', { replace: true });
+        window.localStorage.setItem('email', email.current.value);
+        if(response.data.access_token){
+          navigate('/home', { replace: true });
+        }else{
+          navigate('/plaidauth', { replace: true });
+        }
       }else{
         console.log("password incorrect")
       }

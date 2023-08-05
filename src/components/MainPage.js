@@ -1,4 +1,6 @@
-function StartPage(){
+import { Container, Paper, Typography, Box } from '@mui/material';
+
+function MainPage(){
     return(
       <Container>
         <Typography
@@ -9,10 +11,7 @@ function StartPage(){
         </Typography>
         <Box sx={{display: "flex", flexDirection: {xs: "column", sm:"column"}, m:3}}>
           <Paper elevation={3}>
-            <Typography variant='h3' sx={{textAlign: "center", m: 3}}>Login</Typography>
-            <LoadingButton loading={loading} variant="outlined" sx={{position: "relative", justifyContent: "center", m: 3}} onClick={() => {setLoading(true);open();}} disabled={!ready}>
-              <span>Connect a bank account</span>
-            </LoadingButton>
+            Hello world!
           </Paper>
           
         </Box>
@@ -21,3 +20,5 @@ function StartPage(){
       </Container>
     );
   }
+
+  export default MainPage;
